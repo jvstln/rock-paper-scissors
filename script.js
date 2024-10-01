@@ -5,8 +5,15 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  const choice = prompt("Choose one (rock, paper, scissors)?");
-  return choice.toLowerCase();
+  const choice = prompt(
+    "Choose one (rock OR r, paper OR p, scissors OR s)?"
+  ).toLowerCase();
+
+  if (choice === "r") return "rock";
+  if (choice === "p") return "paper";
+  if (choice === "s") return "scissors";
+
+  return choice;
 }
 
 function didHumanWin(humanChoice, computerChoice) {
