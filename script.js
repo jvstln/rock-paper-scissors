@@ -12,24 +12,26 @@ function getHumanChoice() {
   return choice.toLowerCase();
 }
 
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
-    console.log("Draw! You both picked " + humanChoice);
-  } else if (
+function didHumanWin(humanChoice, computerChoice) {
+  if (
     (humanChoice === "rock" && computerChoice === "scissors") ||
     (humanChoice === "paper" && computerChoice === "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    console.log("Draw! You both picked " + humanChoice);
+  } else if (didHumanWin()) {
     console.log(`You WIN! ${humanChoice} beats ${computerChoice}`);
     humanScore++;
-  } else if (
-    (computerChoice === "rock" && humanChoice === "scissors") ||
-    (computerChoice === "paper" && humanChoice === "rock") ||
-    (computerChoice === "scissors" && humanChoice === "paper")
-  ) {
+  } else {
     console.log(`You LOSE! ${computerChoice} beats ${humanChoice}`);
     computerScore++;
-  } else {
-    console.log(humanChoice + " is an INVALID choice!");
   }
 }
