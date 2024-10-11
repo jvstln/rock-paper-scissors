@@ -13,13 +13,21 @@
       .result-logs {
         text-align: center;
       }
+      .menu-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 10px 0;
+      }
       .btn-wrapper {
         display: flex;
         justify-content: center;
         gap: 10px;
         flex-wrap: wrap;
       }
-      button {
+      #rock,
+      #paper,
+      #scissors {
         font-size: 50px;
         width: 100px;
         height: 100px;
@@ -29,6 +37,9 @@
   <body>
     <h1>Rock Paper Scissors.</h1>
     <p>Make a choice.</p>
+    <div class="menu-buttons">
+      <button id="reset">Reset</button>
+    </div>
     <div class="btn-wrapper">
       <button id="rock">🪨</button>
       <button id="paper">🗒️</button>

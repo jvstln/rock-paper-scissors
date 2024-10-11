@@ -4,6 +4,7 @@ let roundsPlayed = 0;
 let roundsToBePlayed = 5;
 
 const rpsButtons = document.querySelectorAll("#rock, #paper, #scissors");
+const resetButton = document.querySelector("#reset");
 const resultLogs = document.querySelector(".result-logs");
 
 function getComputerChoice() {
@@ -44,6 +45,14 @@ function addResultLog(message, strongEmphasis) {
   if (strongEmphasis) pElement.style.fontWeight = "bold";
 }
 
+function resetGame() {
+  computerScore = 0;
+  humanScore = 0;
+  roundsPlayed = 0;
+
+  resultLogs.textContent = "";
+}
+
 function playRound(humanChoice, computerChoice) {
   if (roundsPlayed === roundsToBePlayed) return;
 
@@ -80,3 +89,5 @@ rpsButtons.forEach((button) => {
     playRound(button.id, getComputerChoice());
   });
 });
+
+resetButton.addEventListener("click", resetGame);
