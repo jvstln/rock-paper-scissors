@@ -90,4 +90,14 @@ rpsButtons.forEach((button) => {
   });
 });
 
+window.addEventListener("keyup", (e) => {
+  if (e.key === "r" || e.key === "R") {
+    playRound("rock", getComputerChoice());
+  } else if (e.key === "p" || e.key === "P") {
+    playRound("paper", getComputerChoice());
+  } else if (e.key === "s" || e.key === "S") {
+    playRound("scissors", getComputerChoice());
+  }
+});
+
 resetButton.addEventListener("click", resetGame);
