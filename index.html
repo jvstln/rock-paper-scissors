@@ -4,11 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h1,
+      p {
+        text-align: center;
+      }
+      .btn-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      button {
+        font-size: 50px;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
   </head>
   <body>
-    <h1>
-      This game can only be played via the <em>javascript console</em> for now
-    </h1>
+    <h1>Rock Paper Scissors.</h1>
+    <p>Make a choice.</p>
+    <div class="btn-wrapper">
+      <button id="rock">🪨</button>
+      <button id="paper">🗒️</button>
+      <button id="scissors">✄</button>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
