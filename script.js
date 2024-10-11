@@ -1,5 +1,10 @@
 let computerScore = 0;
 let humanScore = 0;
+let roundsPlayed = 0;
+let roundsToBePlayed = 5;
+
+const rpsButtons = document.querySelectorAll("#rock, #paper, #scissors");
+const resultLogs = document.querySelector(".result-logs");
 
 function getComputerChoice() {
   const rps = ["rock", "paper", "scissors"];
@@ -31,13 +36,17 @@ function didHumanWin(humanChoice, computerChoice) {
   }
 }
 
-function addResultLog(message) {
+function addResultLog(message, strongEmphasis) {
   const pElement = document.createElement("p");
   pElement.textContent = message;
-  document.querySelector(".result-logs").appendChild(pElement);
+  resultLogs.appendChild(pElement);
+
+  if (strongEmphasis) pElement.style.fontWeight = "bold";
 }
 
 function playRound(humanChoice, computerChoice) {
+  if (roundsPlayed === roundsToBePlayed) return;
+
   if (humanChoice === computerChoice) {
     addResultLog("Draw! You both picked " + humanChoice);
   } else if (didHumanWin(humanChoice, computerChoice)) {
@@ -47,25 +56,26 @@ function playRound(humanChoice, computerChoice) {
     addResultLog(`You LOSE! ${computerChoice} beats ${humanChoice}`);
     computerScore++;
   }
+
+  roundsPlayed++;
+  if (roundsPlayed === roundsToBePlayed) printWinner();
 }
 
-function playGame() {
-  const gameInfo = `Your score: ${humanScore}/5, Computer score: ${computerScore}/5, Draws: ${
-    5 - humanScore - computerScore
-  }/5`;
+function printWinner() {
+  const gameInfo = `Your score: ${humanScore}/${roundsPlayed}, Computer score: ${computerScore}/${roundsPlayed}, Draws: ${
+    roundsPlayed - humanScore - computerScore
+  }/${roundsPlayed}`;
 
   if (humanScore > computerScore) {
-    console.log("YOU WIN! " + gameInfo);
+    addResultLog("YOU WIN! " + gameInfo, true);
   } else if (humanScore < computerScore) {
-    console.log("YOU LOSE! " + gameInfo);
+    addResultLog("YOU LOSE! " + gameInfo, true);
   } else {
-    console.log("TIE! " + gameInfo);
+    addResultLog("TIE! " + gameInfo, true);
   }
 }
 
-const buttons = document.querySelectorAll("#rock, #paper, #scissors");
-
-buttons.forEach((button) => {
+rpsButtons.forEach((button) => {
   button.addEventListener("click", () => {
     playRound(button.id, getComputerChoice());
   });
