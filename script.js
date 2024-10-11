@@ -31,14 +31,20 @@ function didHumanWin(humanChoice, computerChoice) {
   }
 }
 
+function addResultLog(message) {
+  const pElement = document.createElement("p");
+  pElement.textContent = message;
+  document.querySelector(".result-logs").appendChild(pElement);
+}
+
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
-    console.log("Draw! You both picked " + humanChoice);
+    addResultLog("Draw! You both picked " + humanChoice);
   } else if (didHumanWin(humanChoice, computerChoice)) {
-    console.log(`You WIN! ${humanChoice} beats ${computerChoice}`);
+    addResultLog(`You WIN! ${humanChoice} beats ${computerChoice}`);
     humanScore++;
   } else {
-    console.log(`You LOSE! ${computerChoice} beats ${humanChoice}`);
+    addResultLog(`You LOSE! ${computerChoice} beats ${humanChoice}`);
     computerScore++;
   }
 }
